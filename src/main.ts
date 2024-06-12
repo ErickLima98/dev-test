@@ -6,13 +6,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    exposedHeaders: [
-      'authorization',
-      'Authorization'
-    ]
+    exposedHeaders: ['authorization', 'Authorization'],
   });
 
-app.useGlobalFilters(new HttpExceptionFilter());
+  app.useGlobalFilters(new HttpExceptionFilter());
   await app.listen(3000);
 }
 bootstrap();

@@ -6,6 +6,6 @@ import { GetDataService } from './api-consumer/external-api';
 @Module({
   controllers: [MetaPhotoController],
   providers: [MetaPhotoService, GetDataService],
-  imports: []
+  imports: [],
 })
 export class MetaPhotoModule {}

@@ -5,6 +5,6 @@ export class AppController {
   @Get()
   @HttpCode(200)
   getHello(): string {
-    return 'Dev-Test running'
+    return 'Dev-Test running';
   }
 }

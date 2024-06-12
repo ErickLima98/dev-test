@@ -6,9 +6,7 @@ export class MetaPhotoController {
   constructor(private readonly metaPhotoService: MetaPhotoService) {}
 
   @Get('photos/:id')
-  getPhotoDetails(
-    @Param('id') id: string
-  ) {
+  getPhotoDetails(@Param('id') id: string) {
     return this.metaPhotoService.getPhotoDetails(id);
   }
 
@@ -16,5 +14,4 @@ export class MetaPhotoController {
   findOne(@Query() query: any) {
     return this.metaPhotoService.getPhotos(query);
   }
-
 }
