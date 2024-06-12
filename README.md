@@ -5,6 +5,7 @@
 ## Description
 
 Para poder correr el programa en local es importante seguir los siguientes pasos:
+  * Es importante al momento de clonar el repositorio cambiarse a la rama develop para poder correr el programa
   * Correr el comando de npm install para poder instalar las dependecias
   * Correr el comando npm run start:dev para levantar el backend
   * Para poder hacer llamada a la api, utilizar postman o insomnia
