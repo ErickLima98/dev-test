@@ -19,7 +19,9 @@ Para poder correr el programa en local es importante seguir los siguientes pasos
       - http://localhost:3000/meta-photos/photos?album.title=quidem&limit=10&offset=50
 
 También está desplago el proyecto en esta ruta: https://meta-photo-api.onrender.com/meta-photos/photos
-Entonces si gustan también pueden hacer las mismas pruebas desde postman o insomnia 
+Entonces si gustan también pueden hacer las mismas pruebas desde postman o insomnia
+Tomar en cuenta que al ser una instancia gratuita, esta se pausa por inactividad, Por lo que la primer request puede demorar
+aporximadamente 50 segundos o más.
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
