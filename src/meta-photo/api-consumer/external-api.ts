@@ -48,10 +48,17 @@ export class GetDataService {
     };
   }
 
-  filterPhotos({ title, albumTitle, userEmail }, photos, albums, users) {
-    return photos.filter((photo) => {
-      const album = albums.find((a) => a.id === photo.albumId);
-      const user = users.find((u) => u.id === album.userId);
+  filterPhotos(query, photos, albums, users) {
+    const {
+      title,
+      'album.title': albumTitle,
+      'album.user.email': userEmail,
+    } = query;
+    return photos.filter((photo: { albumId: any; title: string | any[]; }) => {
+      const album = albums.find((album: { id: any; }) => album.id === photo.albumId);
+      const user = album
+        ? users.find((user: { id: any; }) => user.id === album.userId)
+        : null;
 
       return (
         (!title || photo.title.includes(title)) &&
@@ -65,18 +72,18 @@ export class GetDataService {
     const { users, albums, photos } = await this.fetchAllData();
     const filteredPhotos = this.filterPhotos(query, photos, albums, users);
 
-    const { limit = 25, offset = 0 } = query;
+    const limit = query.limit ? parseInt(query.limit) : 25;
+    const offset = query.offset ? parseInt(query.offset) : 0;
+
     const paginatedResults = filteredPhotos.slice(offset, offset + limit);
 
     return paginatedResults.map((photo: { albumId: any }) => {
       const album = albums.find(
         (album: { id: any }) => album.id === photo.albumId,
-        query,
       );
-      const user = users.find(
-        (user: { id: any }) => user.id === album.userId,
-        query,
-      );
+      const user = album
+        ? users.find((user: { id: any }) => user.id === album.userId)
+        : null;
 
       return {
         ...photo,

@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: meta-photo-api
+    env: node
+    plan: free
+    buildCommand: 'npm install'
+    startCommand: 'nest start'
+    envVars:
+      - key: NODE_ENV
+        value: production
